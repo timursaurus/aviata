@@ -1,93 +1,93 @@
 export interface Flight {
   itineraries: FlightItenerary[][];
-  price_details: FlightPriceDetails;
+  priceDetails: FlightPriceDetails;
   price: string;
   currency: string;
-  bonus_usage: boolean;
+  isBonusUsage: boolean;
   services: Record<string, FlightServiceDetails>;
-  price_raw: number;
-  validating_carrier: string;
+  priceRaw: number;
+  validatingCarrier: string;
   id: string;
-  has_meta: boolean;
-  has_offers: boolean;
-  best_time: number;
-  bonus_accrual: boolean;
-  // bonus_accrual_details?: any;
-  // bonus_usage_details?: any;
+  hasMeta: boolean;
+  hasOffers: boolean;
+  bestTime: number;
+  isBonusAccrual: boolean;
+  // bonusAccrualDetails?: any;
+  // bonusUsageDetails?: any;
   provider: string;
-  refundable: boolean;
-  provider_class: string;
+  isRefundable: boolean;
+  providerClass: string;
 }
 
 export interface FlightServiceDetails {
-  full_description: string;
-  alt_text: string;
+  fullDescription: string;
+  altText: string;
   code: string;
   description: string;
   title: string;
-  default: string;
+  // default: string;
   solution: string;
   value: string;
   icon: string;
 }
 
 export interface FlightPriceDetails {
-  base_raw: number;
+  baseRaw: number;
   modifiers: string;
-  modifiers_raw: number;
+  modifiersRaw: number;
   taxes: string;
   base: string;
-  taxes_raw: number;
+  taxesRaw: number;
 }
 
 export interface FlightItenerary {
-  dep_date: string;
+  departureDate: string;
   hash: string;
-  dir_index: number;
+  dirIndex: number;
   price: {
     currency: string;
     amount: string;
-    price_raw: number;
+    priceRaw: number;
   };
   layovers: number[];
-  arr_date: string;
-  // allowed_offers: any[];
-  carrier_name: string;
-  is_meta: boolean;
+  arriveDate: string;
+  // allowedOffers: any[];
+  carrierName: string;
+  isMeta: boolean;
   segments: FlightSegment[];
   stops: number;
   carrier: string;
-  refundable: boolean;
-  traveltime: number;
+  isRefundable: boolean;
+  travelTime: number;
 }
 
 export interface FlightSegment {
   origin: string;
-  airport_dest: string;
-  arr_time_iso: Date;
-  dep_terminal: string;
-  dep_time_iso: Date;
-  carrier_name: string;
-  // stop_locations: any[];
-  dest_code: string;
-  airport_dest_terminal: string;
+  airportDestination: string;
+  arriveTimeISO: Date;
+  departureTerminal: string;
+  departureTimeISO: Date;
+  carrierName: string;
+  // stopLocations: any[];
+  destinationCode: string;
+  airportDestinationTerminal: string;
   equipment: string;
-  flight_num: string;
+  flightNum: string;
   stops: number;
-  airport_origin: string;
+  airportOrigin: string;
   cabin: string;
-  dep_time: string;
-  dest: string;
-  origin_code: string;
-  baggage_options: BaggageOption[];
-  arr_time: string;
+  departureTime: string;
+  destination: string;
+  originCode: string;
+  baggageOptions: BaggageOption[];
+  arriveTime: string;
   plane: string;
   services: FlightServiceDetails;
-  fare_basis_code: string;
-  airport_origin_terminal: string;
-  arr_terminal: string;
+  fareBasisCode: string;
+  airportOriginTerminal: string;
+  arriveTerminal: string;
   carrier: string;
-  fare_seats: number;
+  fareSeats: number;
 }
 
 export interface BaggageOption {
