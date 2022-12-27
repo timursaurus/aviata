@@ -12,8 +12,8 @@ export interface Flight {
   hasOffers: boolean;
   bestTime: number;
   isBonusAccrual: boolean;
-  // bonusAccrualDetails?: any;
-  // bonusUsageDetails?: any;
+  bonusAccrualDetails: unknown;
+  bonusUsageDetails: unknown;
   provider: string;
   isRefundable: boolean;
   providerClass: string;
@@ -25,7 +25,7 @@ export interface FlightServiceDetails {
   code: string;
   description: string;
   title: string;
-  // default: string;
+  default: string;
   solution: string;
   value: string;
   icon: string;
@@ -51,7 +51,7 @@ export interface FlightItenerary {
   };
   layovers: number[];
   arriveDate: string;
-  // allowedOffers: any[];
+  allowedOffers: unknown[];
   carrierName: string;
   isMeta: boolean;
   segments: FlightSegment[];
@@ -68,7 +68,7 @@ export interface FlightSegment {
   departureTerminal: string;
   departureTimeISO: Date;
   carrierName: string;
-  // stopLocations: any[];
+  stopLocations: unknown[];
   destinationCode: string;
   airportDestinationTerminal: string;
   equipment: string;

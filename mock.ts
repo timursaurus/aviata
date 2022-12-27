@@ -1,4 +1,4 @@
-const mockSearchResult = {
+export const mockSearchResult = {
   airlines: {
     KC: "Air Astana",
     HY: "Uzbekistan Airways",

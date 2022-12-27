@@ -12,8 +12,8 @@ export interface RawFlight {
   has_offers: boolean;
   best_time: number;
   bonus_accrual: boolean;
-  // bonus_accrual_details?: any;
-  // bonus_usage_details?: any;
+  bonus_accrual_details: unknown;
+  bonus_usage_details: unknown;
   provider: string;
   refundable: boolean;
   provider_class: string;
@@ -51,7 +51,7 @@ export interface RawFlightItenerary {
   };
   layovers: number[];
   arr_date: string;
-  // allowed_offers: any[];
+  allowed_offers: unknown[];
   carrier_name: string;
   is_meta: boolean;
   segments: RawFlightSegment[];
@@ -68,7 +68,7 @@ export interface RawFlightSegment {
   dep_terminal: string;
   dep_time_iso: Date;
   carrier_name: string;
-  // stop_locations: any[];
+  stop_locations: unknown[];
   dest_code: string;
   airport_dest_terminal: string;
   equipment: string;

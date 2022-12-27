@@ -30,6 +30,8 @@ export class FlightSerializer implements Flight {
   isRefundable: boolean;
   services: Record<string, FlightServiceDetails>;
   validatingCarrier: string;
+  bonusAccrualDetails: unknown;
+  bonusUsageDetails: unknown;
   constructor({
     bestTime,
     currency,
@@ -83,6 +85,8 @@ export class FlightSerializer implements Flight {
     refundable,
     services,
     validating_carrier,
+    bonus_accrual_details,
+    bonus_usage_details,
   }: RawFlight): Flight {
     return new FlightSerializer({
       bestTime: best_time,
@@ -104,6 +108,8 @@ export class FlightSerializer implements Flight {
         taxes: price_details.taxes,
         taxesRaw: price_details.taxes_raw,
       },
+      bonusAccrualDetails: bonus_accrual_details,
+      bonusUsageDetails: bonus_usage_details,
       priceRaw: price_raw,
       provider,
       providerClass: provider_class,
@@ -112,7 +118,7 @@ export class FlightSerializer implements Flight {
       services: FlightServiceDetailsSerializer.serializeKeyed(services),
     });
   }
-  static serializeMany(rawFlights: RawFlight[]): Flight[] {
+  static serializeMany(rawFlights: RawFlight[]) {
     return rawFlights?.length
       ? rawFlights.map((rawFlight) => FlightSerializer.serialize(rawFlight))
       : [];
@@ -129,10 +135,15 @@ export class FlightItenerarySerializer implements FlightItenerary {
   isMeta: boolean;
   isRefundable: boolean;
   layovers: number[];
-  price: { currency: string; amount: string; priceRaw: number };
+  price: {
+    currency: string;
+    amount: string;
+    priceRaw: number;
+  };
   segments: FlightSegment[];
   stops: number;
   travelTime: number;
+  allowedOffers: unknown[];
   constructor({
     arriveDate,
     carrier,
@@ -147,6 +158,7 @@ export class FlightItenerarySerializer implements FlightItenerary {
     segments,
     stops,
     travelTime,
+    allowedOffers,
   }: FlightItenerary) {
     this.arriveDate = arriveDate;
     this.carrier = carrier;
@@ -161,6 +173,7 @@ export class FlightItenerarySerializer implements FlightItenerary {
     this.segments = segments;
     this.stops = stops;
     this.travelTime = travelTime;
+    this.allowedOffers = allowedOffers;
   }
 
   static serialize({
@@ -177,6 +190,7 @@ export class FlightItenerarySerializer implements FlightItenerary {
     price,
     segments,
     stops,
+    allowed_offers,
   }: RawFlightItenerary): FlightItenerary {
     return new FlightItenerarySerializer({
       arriveDate: arr_date,
@@ -196,6 +210,7 @@ export class FlightItenerarySerializer implements FlightItenerary {
       segments: FlightSegmentSerializer.serializeMany(segments),
       stops,
       travelTime: traveltime,
+      allowedOffers: allowed_offers,
     });
   }
 
@@ -236,6 +251,8 @@ export class FlightSegmentSerializer implements FlightSegment {
   fareSeats: number;
   plane: string;
   services: FlightServiceDetails;
+  stopLocations: unknown[];
+
   constructor({
     airportDestination,
     airportDestinationTerminal,
@@ -262,6 +279,7 @@ export class FlightSegmentSerializer implements FlightSegment {
     fareSeats,
     plane,
     services,
+    stopLocations,
   }: FlightSegment) {
     this.airportDestination = airportDestination;
     this.airportDestinationTerminal = airportDestinationTerminal;
@@ -288,6 +306,7 @@ export class FlightSegmentSerializer implements FlightSegment {
     this.fareSeats = fareSeats;
     this.plane = plane;
     this.services = services;
+    this.stopLocations = stopLocations;
   }
 
   static serialize({
@@ -316,6 +335,7 @@ export class FlightSegmentSerializer implements FlightSegment {
     origin_code,
     plane,
     services,
+    stop_locations,
   }: RawFlightSegment) {
     return new FlightSegmentSerializer({
       airportDestination: airport_dest,
@@ -342,6 +362,7 @@ export class FlightSegmentSerializer implements FlightSegment {
       origin,
       originCode: origin_code,
       plane,
+      stopLocations: stop_locations,
       services: FlightServiceDetailsSerializer.serialize(services),
     });
   }
@@ -364,6 +385,7 @@ export class FlightServiceDetailsSerializer implements FlightServiceDetails {
   altText: string;
   description: string;
   code: string;
+  default: string;
   constructor({
     altText,
     description,
@@ -373,6 +395,7 @@ export class FlightServiceDetailsSerializer implements FlightServiceDetails {
     solution,
     title,
     value,
+    default: default_,
   }: FlightServiceDetails) {
     this.altText = altText;
     this.description = description;
@@ -382,27 +405,19 @@ export class FlightServiceDetailsSerializer implements FlightServiceDetails {
     this.solution = solution;
     this.title = title;
     this.value = value;
-    // this.default = default;
+    this.default = default_;
   }
-  static serialize({
-    alt_text,
-    description,
-    code,
-    full_description,
-    icon,
-    solution,
-    title,
-    value,
-  }: RawFlightServiceDetails) {
+  static serialize(rawFlightService: RawFlightServiceDetails) {
     return new FlightServiceDetailsSerializer({
-      altText: alt_text,
-      description,
-      code,
-      fullDescription: full_description,
-      icon,
-      solution,
-      title,
-      value,
+      altText: rawFlightService.alt_text,
+      description: rawFlightService.description,
+      code: rawFlightService.code,
+      fullDescription: rawFlightService.full_description,
+      icon: rawFlightService.icon,
+      solution: rawFlightService.solution,
+      title: rawFlightService.title,
+      value: rawFlightService.value,
+      default: rawFlightService.default,
     });
   }
   static serializeMany(
