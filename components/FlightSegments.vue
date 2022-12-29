@@ -1,22 +1,43 @@
 <template>
   <div class="flex">
-    <div>
-      <div>{{ departure.date }}</div>
-      <div class="text-2xl">{{ departure.time }}</div>
+    <div class="mx-4">
+      <div class="text-sm">{{ departure.date }}</div>
+      <div class="text-3xl">{{ departure.time }}</div>
     </div>
     <div>
-      {{ firstSegment.originCode }}
+      <div class="flex justify-between">
+        <!-- Origin (from) -->
+        <span class="text-[#B9B9B9] text-sm">
+          {{ firstSegment.originCode }}
+        </span>
+        <span class="text-base">{{ flightDuration }} </span>
+        <!-- Destination (to) -->
+        <span class="text-[#B9B9B9] text-sm">
+          {{ lastSegment.destinationCode }}
+        </span>
+      </div>
+      <div class="flex justify-center" >
+        <flight-timeline-icon  />
+      </div>
+      <!-- Through -->
+      <div class="text-sm flex justify-center">
+        <span
+          class="text-[#FF9900]"
+          v-if="firstSegment.originCode !== lastSegment.originCode"
+        >
+          Через г. {{ lastSegment.origin }}
+          <span v-if="layoverTime > 0"
+            >, {{ layoverDuration }}</span
+          >
+        </span>
+      </div>
     </div>
-    <div>
-      <span class="mx-2"> {{ flightDuration }} </span>
-      <div></div>
-    </div>
-    <div>
-      {{ diff }}
-    </div>
-    <div>
-      <div>{{ arrival.date }} <span class="text-xs">+1 {{ differenceInDays }} </span></div>
-      <div class="text-2xl">{{ arrival.time }}</div>
+    <div></div>
+    <div class="mx-4">
+      <div class="text-sm">
+        {{ arrival.date }}<span class="text-xs text-[#FF3724]"> +1 </span>
+      </div>
+      <div class="text-3xl">{{ arrival.time }}</div>
     </div>
   </div>
 </template>
@@ -34,6 +55,30 @@ const props = defineProps({
     type: Number,
     required: true,
   },
+  layovers: {
+    type: Array as PropType<number[]>,
+    required: true,
+  },
+});
+
+const layoverDuration = computed(() => {
+  const hours = Math.floor(layoverTime.value / 3600);
+  const minutes = Math.floor((layoverTime.value - hours * 3600) / 60);
+  if (hours === 0) {
+    return `${minutes} мин`;
+  }
+  if (minutes === 0) {
+    return `${hours} ч`;
+  }
+  return `${hours} ч ${minutes} м`;
+});
+
+const layoverTime = computed(() => {
+  const { layovers } = props;
+  if (layovers.length === 0) {
+    return 0;
+  }
+  return layovers.reduce((acc, curr) => acc + curr, 0);
 });
 
 const firstSegment = computed(() => {
@@ -44,16 +89,6 @@ const lastSegment = computed(() => {
   const { segments } = props;
   return segments[segments.length - 1];
 });
-
-const diff = () => {
-  const { segments } = props;
-  const first = segments[0];
-  const last = segments[segments.length - 1];
-  const firstDate = new Date(first.departureTime);
-  const lastDate = new Date(last.arriveTime);
-  const diff = lastDate.getDate() - firstDate.getDate();
-  return diff;
-}
 
 const flightDuration = computed(() => {
   const { travelTime } = props;

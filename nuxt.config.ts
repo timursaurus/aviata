@@ -6,9 +6,6 @@ export default defineNuxtConfig({
   unocss: {
     uno: true,
   },
-  imports: {
-    dirs: [
-      'components/icons/*',
-    ]
-  }
+  ssr: false,
+
 })

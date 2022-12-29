@@ -3181,7 +3181,7 @@ export const mockSearchResult = {
             ],
             stops: 1,
             carrier: "B2",
-            refundable: true,
+            refundable: false,
             traveltime: 62400.0,
           },
         ],

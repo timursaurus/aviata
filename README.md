@@ -1,42 +1,26 @@
-# Nuxt 3 Minimal Starter
+Тестовое задание на позицию фронтенд разработчика
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Вам нужно реализовать результат поиска авиабилетов и их фильтры на Vue.js.
+Все данные для отображения информации для карточки результата - в файле results.json.
 
-## Setup
+Дизайн: https://www.figma.com/file/J9crNiVXu8xO4GZB20lhPO/%D0%A2%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B5-%D0%B7%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D1%84%D1%80%D0%BE%D0%BD%D1%82?node-id=0%3A1
 
-Make sure to install the dependencies:
+Логотипы авиакомпаний можно использовать по ссылке https://aviata.kz/static/airline-logos/80x80/{code}.png,
+где code - двухсимвольный iata код авиакомпании.
+Пример: https://aviata.kz/static/airline-logos/80x80/KC.png
 
-```bash
-# yarn
-yarn install
+Критерии оценки:
+- Соответствие дизайну
+- Работа фильтров
+- Реализация адаптивной верстки
+- Использование оптимальных подходов при написании кода
 
-# npm
-npm install
+Будут плюсом:
+- Тесты
+- Микроанимации
 
-# pnpm
-pnpm install --shamefully-hoist
-```
+Если во время выполнения задания возникают вопросы, то не стясняйтесь спрашивать у HR)
 
-## Development Server
+Готовое задание нужно загрузить в публичный репозиторий в GitHub и отправить ссылку.
 
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Сроки для выполнения задания: 3 дня.
