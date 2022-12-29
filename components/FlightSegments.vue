@@ -16,8 +16,8 @@
           {{ lastSegment.destinationCode }}
         </span>
       </div>
-      <div class="flex justify-center" >
-        <flight-timeline-icon  />
+      <div class="flex justify-center">
+        <flight-timeline-icon />
       </div>
       <!-- Through -->
       <div class="text-sm flex justify-center">
@@ -26,16 +26,17 @@
           v-if="firstSegment.originCode !== lastSegment.originCode"
         >
           Через г. {{ lastSegment.origin }}
-          <span v-if="layoverTime > 0"
-            >, {{ layoverDuration }}</span
-          >
+          <span v-if="layoverTime > 0">, {{ layoverDuration }}</span>
         </span>
       </div>
     </div>
     <div></div>
     <div class="mx-4">
       <div class="text-sm">
-        {{ arrival.date }}<span class="text-xs text-[#FF3724]"> +1 </span>
+        {{ arrival.date
+        }}<span v-if="timeDiff > 0" class="text-xs text-[#FF3724]">
+          + {{ timeDiff }}
+        </span>
       </div>
       <div class="text-3xl">{{ arrival.time }}</div>
     </div>
@@ -59,6 +60,16 @@ const props = defineProps({
     type: Array as PropType<number[]>,
     required: true,
   },
+});
+
+const timeDiff = computed(() => {
+  const firstSegmentArrive = new Date(
+    firstSegment.value.arriveTimeISO
+  ).getDate();
+  const lastSegmentDeparture = new Date(
+    lastSegment.value.departureTimeISO
+  ).getDate();
+  return lastSegmentDeparture - firstSegmentArrive;
 });
 
 const layoverDuration = computed(() => {
