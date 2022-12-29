@@ -29,7 +29,7 @@
     <section
       class="bg-[#F5F5F5] px-4 md:rounded-tr-md md:rounded-br-md bg-[#f5f5f5] lg:w-full items-center"
     >
-      <div class="lg:my-4 flex items-baseline justify-center">
+      <div class="lg:my-4 py-2 flex items-baseline justify-center">
         <span class="text-2xl"> {{ flight.price }} </span>
         <span class="text-lg mx-1"> {{ flightCurrency }} </span>
       </div>

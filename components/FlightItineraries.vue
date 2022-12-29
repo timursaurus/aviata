@@ -1,6 +1,6 @@
 <template>
   <div class="sm:flex sm:px-4 py-8 items-center justify-between  ">
-    <div class="flex text-xl pb-8 sm:pb-0 gap-x-2 items-center">
+    <div class="flex px-4 text-xl pb-8 sm:pb-0 gap-x-2 items-center">
       <img
         :src="carrierLogo"
         width="40"
@@ -9,7 +9,7 @@
       />
       <span class="truncate text-base " > {{ itinerary.carrierName }} </span>
     </div>
-    <div class="flex">
+    <div class="flex justify-center">
       <flight-segments
         :travel-time="itinerary.travelTime"
         :segments="itinerary.segments"
