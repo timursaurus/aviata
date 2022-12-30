@@ -87,7 +87,7 @@ export class FlightSerializer implements Flight {
     validating_carrier,
     bonus_accrual_details,
     bonus_usage_details,
-  }: RawFlight): Flight {
+  }: RawFlight) {
     return new FlightSerializer({
       bestTime: best_time,
       currency,
@@ -232,7 +232,7 @@ export class FlightSegmentSerializer implements FlightSegment {
   airportOriginTerminal: string;
   arriveTerminal: string;
   arriveTime: string;
-  arriveTimeISO: Date;
+  arriveTimeISO: string;
   baggageOptions: BaggageOption[];
   cabin: string;
   carrier: string;
@@ -240,7 +240,7 @@ export class FlightSegmentSerializer implements FlightSegment {
   stops: number;
   departureTerminal: string;
   departureTime: string;
-  departureTimeISO: Date;
+  departureTimeISO: string;
   destination: string;
   destinationCode: string;
   equipment: string;

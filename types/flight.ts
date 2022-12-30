@@ -64,9 +64,9 @@ export interface FlightItenerary {
 export interface FlightSegment {
   origin: string;
   airportDestination: string;
-  arriveTimeISO: Date;
+  arriveTimeISO: string;
   departureTerminal: string;
-  departureTimeISO: Date;
+  departureTimeISO: string;
   carrierName: string;
   stopLocations: unknown[];
   destinationCode: string;

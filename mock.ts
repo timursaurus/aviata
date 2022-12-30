@@ -1,4 +1,10 @@
-export const mockSearchResult = {
+import type { RawFlight } from "@/types/flight.raw"
+interface Res {
+  airlines: Record<string, string>
+  flights: RawFlight[]
+}
+
+export const mockSearchResult: Res = {
   airlines: {
     KC: "Air Astana",
     HY: "Uzbekistan Airways",

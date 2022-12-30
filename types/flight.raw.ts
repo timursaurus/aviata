@@ -64,9 +64,9 @@ export interface RawFlightItenerary {
 export interface RawFlightSegment {
   origin: string;
   airport_dest: string;
-  arr_time_iso: Date;
+  arr_time_iso: string;
   dep_terminal: string;
-  dep_time_iso: Date;
+  dep_time_iso: string;
   carrier_name: string;
   stop_locations: unknown[];
   dest_code: string;
