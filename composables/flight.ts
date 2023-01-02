@@ -32,11 +32,11 @@ export function useFilterFlights() {
   );
 
   const filteredFlights = computed(() => {
-    const airline = useRoute().query.airline;
-    const tariff = useRoute().query.tariff;
+    const airline = useRoute().query.airline as string
+    const tariff = useRoute().query.tariff as string
 
-    const airlineCodes = typeof airline === "string" ? airline.split(",") : [];
-    const tariffCodes = typeof tariff === "string" ? tariff.split(",") : [];
+    const airlineCodes = airline ? airline.split(",") : [];
+    const tariffCodes = tariff ? tariff.split(",") : [];
 
     if (airline && tariff) {
       return serializedFlights.value.filter((f) => {
