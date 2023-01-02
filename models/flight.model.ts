@@ -1,5 +1,4 @@
 import type {
-  BaggageOption,
   Flight,
   FlightItenerary,
   FlightSegment,
@@ -117,7 +116,7 @@ export class FlightSegmentSerializer {
       destinationCode: rawFlightSegment.dest_code,
       fareBasisCode: rawFlightSegment.fare_basis_code,
       fareSeats: rawFlightSegment.fare_seats,
-      flightNum: rawFlightSegment.flight_num,
+      flightNumber: rawFlightSegment.flight_num,
       originCode: rawFlightSegment.origin_code,
       stopLocations: rawFlightSegment.stop_locations,
       services: FlightServiceDetailsSerializer.serialize(

@@ -72,7 +72,7 @@ export interface FlightSegment {
   destinationCode: string;
   airportDestinationTerminal: string;
   equipment: string;
-  flightNum: string;
+  flightNumber: string;
   stops: number;
   airportOrigin: string;
   cabin: string;
