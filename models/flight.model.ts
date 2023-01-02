@@ -136,8 +136,8 @@ export class FlightSegmentSerializer {
 }
 
 export class FlightServiceDetailsSerializer {
-  constructor(FlightServiceDetails: FlightServiceDetails) {
-    Object.assign(this, FlightServiceDetails);
+  constructor(flightServiceDetails: FlightServiceDetails) {
+    Object.assign(this, flightServiceDetails);
   }
   static serialize(rawFlightService: RawFlightServiceDetails) {
     return new FlightServiceDetailsSerializer({
