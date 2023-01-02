@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { useFilterFlights } from "@/composables/flight";
+import { useFilterFlights } from "@/composables/flight.filter";
 
 useHead({
   title: "Aviata",
