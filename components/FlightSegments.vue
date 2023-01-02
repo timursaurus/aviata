@@ -63,13 +63,13 @@ const props = defineProps({
 });
 
 const timeDiff = computed(() => {
-  const firstSegmentArrive = new Date(
-    firstSegment.value.arriveTimeISO
+  const firstSegmentArrival = new Date(
+    firstSegment.value.arrivalTimeISO
   ).getDate();
   const lastSegmentDeparture = new Date(
     lastSegment.value.departureTimeISO
   ).getDate();
-  return lastSegmentDeparture - firstSegmentArrive;
+  return lastSegmentDeparture - firstSegmentArrival;
 });
 
 const layoverDuration = computed(() => {
@@ -126,8 +126,8 @@ const departure = computed(() => {
 });
 
 const arrival = computed(() => {
-  const { arriveTime } = lastSegment.value;
-  const d = arriveTime.split(" ");
+  const { arrivalTime } = lastSegment.value;
+  const d = arrivalTime.split(" ");
   const time = d.pop();
   const date = d.join(" ");
   return {

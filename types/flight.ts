@@ -50,7 +50,7 @@ export interface FlightItenerary {
     priceRaw: number;
   };
   layovers: number[];
-  arriveDate: string;
+  arrivalDate: string;
   allowedOffers: unknown[];
   carrierName: string;
   isMeta: boolean;
@@ -64,7 +64,7 @@ export interface FlightItenerary {
 export interface FlightSegment {
   origin: string;
   airportDestination: string;
-  arriveTimeISO: string;
+  arrivalTimeISO: string;
   departureTerminal: string;
   departureTimeISO: string;
   carrierName: string;
@@ -80,12 +80,12 @@ export interface FlightSegment {
   destination: string;
   originCode: string;
   baggageOptions: BaggageOption[];
-  arriveTime: string;
+  arrivalTime: string;
   plane: string;
   services: FlightServiceDetails;
   fareBasisCode: string;
   airportOriginTerminal: string;
-  arriveTerminal: string;
+  arrivalTerminal: string;
   carrier: string;
   fareSeats: number;
 }

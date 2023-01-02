@@ -44,10 +44,9 @@ useHead({
   },
 });
 
-
 const rawFlights = computed(() => mockSearchResult.flights);
 const serializedFlights = computed(() =>
-  rawFlights.value.map((f) => FlightSerializer.serialize(f))
+  rawFlights.value.map((f) => FlightSerializer.serialize(f) as Flight)
 );
 
 //FIXME: move to composable
