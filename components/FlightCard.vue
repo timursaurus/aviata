@@ -1,11 +1,14 @@
 <template>
-  <div class="lg:flex mb-4 drop-shadow-md ">
+  <div class="lg:flex mb-4 drop-shadow-md">
     <!-- Flight Details -->
     <section
       class="bg-white lg:px-4 md:rounded-tl-md md:rounded-bl-md flex flex-col relative"
     >
       <!-- Itineraries -->
-      <flight-itineraries class="lg:min-w-150 " :itineraries="flight.itineraries" />
+      <flight-itineraries
+        class="lg:min-w-150"
+        :itineraries="flight.itineraries"
+      />
       <!-- Bottom Links -->
       <div class="flex pb-4 w-full justify-between mt-auto">
         <div class="w-full px-4 flex items-center">
@@ -59,9 +62,8 @@
 </template>
 <script setup lang="ts">
 import { PropType } from "vue";
-import { CURRENCIES_UNICODE } from "~~/constants/currency";
-import { Flight } from "~~/types/flight";
-import FlightItineraries from "./FlightItineraries.vue";
+import { CURRENCY_UNICODE } from "@/constants/currency";
+import { Flight } from "@/types/flight";
 
 const props = defineProps({
   flight: {
@@ -91,7 +93,7 @@ const flightCurrency = computed(() => {
   //   maximumSignificantDigits: 3,
   // }).format(priceRaw)
 
-  return `${CURRENCIES_UNICODE[currency] || currency}`;
+  return `${CURRENCY_UNICODE[currency] || currency}`;
 });
 
 const bottomLinks = ref([

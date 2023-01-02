@@ -1,4 +1,4 @@
-export const CURRENCIES_UNICODE: Record<string, string> = {
+export const CURRENCY_UNICODE: Record<string, string> = {
   USD: '\u0024',
   KZT: '\u20B8',
   EUR: '\u20AC',
