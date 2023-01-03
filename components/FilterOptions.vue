@@ -55,7 +55,6 @@ const props = defineProps({
 watch(selected, (newVal) => {
   const { optionKey } = props;
 
-  // is selected includes '_all' - remove all other options from query and selected
   if (newVal.find((v) => v.value === "_all")) {
     useRouter().replace({
       query: { ...useRoute().query, [optionKey]: undefined },
